@@ -128,8 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="basic.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="openimg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="funcs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
