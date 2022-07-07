@@ -3,6 +3,7 @@ int main()
 {
 	//readimg();
 	//greyTrans();
-	logTrans();
+	//logTrans();
+	subtractTrans();
 	return 0;
 }

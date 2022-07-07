@@ -11,3 +11,6 @@ void greyTrans();
 
 //对数变换
 void logTrans();
+
+//背景相减
+void subtractTrans();

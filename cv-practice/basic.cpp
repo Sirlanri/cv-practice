@@ -71,3 +71,24 @@ void logTrans()
 	imshow("out", outimg);
 	waitKey(0);
 }
+
+/*Í¼ÏñÏà¼õ*/
+void subtractTrans()
+{
+	Mat backimg, frontimg,resimg;
+	backimg = imread("C:\\my\\½ØÍ¼\\20220707142927.png");
+	frontimg = imread("C:\\my\\½ØÍ¼\\20220707142913.png");
+	//¼ì²â³¤¿í
+	if (backimg.rows!=frontimg.rows||backimg.cols!=frontimg.cols)
+	{	
+		cout << "Í¼Æ¬³¤¿í²»ºÏ" << endl;
+		return;
+	}
+
+	absdiff(frontimg, backimg, resimg);
+	imshow("¿ÌÇç", resimg);
+	
+	waitKey();
+	return;
+
+}
