@@ -12,7 +12,7 @@ void readimg();
 相当于CV里的helloworld？*/
 void readimg()
 {
-	String imgName("C:\\my\\截图\\QQ截图20220624190041.png"); //反斜杠 需要转义
+	String imgName("D:\\图片\\xhs\\XHS_1608302862803120701da-2ca7-3818-863c-4ec3e6bf44dc.jpg"); //反斜杠 需要转义
 	Mat image;
 	image = imread(imgName, IMREAD_COLOR);
 	namedWindow("ricocooooo的偷拍", WINDOW_AUTOSIZE);

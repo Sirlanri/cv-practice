@@ -10,7 +10,7 @@ using namespace std;
 void reverseGrey()
 {
 	Mat sourceimg, outimg, greyimg;
-	sourceimg = imread("C:\\my\\½ØÍ¼\\QQ½ØÍ¼20220624190041.png");
+	sourceimg = imread("D:\\Í¼Æ¬\\xhs\\XHS_1608302862803120701da-2ca7-3818-863c-4ec3e6bf44dc.jpg");
 	if (sourceimg.empty())
 	{
 		cout << "¶ÁÈ¡´íÎó" << endl;
