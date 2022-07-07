@@ -4,3 +4,4 @@
 #pragma once
 void readimg();
 void reverseGrey();
+void logtrans();
