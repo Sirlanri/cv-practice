@@ -2,7 +2,7 @@
 int main()
 {
 	//readimg();
-	//reverseGrey();
-	logtrans();
+	//greyTrans();
+	logTrans();
 	return 0;
 }

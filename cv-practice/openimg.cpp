@@ -6,7 +6,6 @@
 using namespace cv;
 using namespace std;
 
-void readimg();
 
 /* 最基础的读取，显示一张图像
 相当于CV里的helloworld？*/

@@ -2,6 +2,12 @@
 他喵的这C艹毛病真多，还得整个头文件伺候 ヾ(｡｀Д´｡)ﾉ彡 */
 
 #pragma once
-void readimg();
-void reverseGrey();
-void logtrans();
+
+//读取、显示图片
+void readimg();	
+
+//灰度反转
+void greyTrans();
+
+//对数变换
+void logTrans();

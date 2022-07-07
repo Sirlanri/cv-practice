@@ -7,7 +7,7 @@ using namespace cv;
 using namespace std;
 
 /*灰度反转*/
-void reverseGrey()
+void greyTrans()
 {
 	Mat sourceimg, outimg, greyimg;
 	sourceimg = imread("D:\\图片\\xhs\\XHS_1608302862803120701da-2ca7-3818-863c-4ec3e6bf44dc.jpg");
@@ -41,11 +41,11 @@ void reverseGrey()
 }
 
 /*对数变换 s=c*log(1+r)*/
-void logtrans()
+void logTrans()
 {
-	int c = 6;	//公式中的c值
+	int c = 10;	//公式中的c值
 	Mat sourceimg, outimg, greyimg;
-	sourceimg = imread("D:\\图片\\xhs\\XHS_160584013425731f1cca6-eebf-3668-943d-e5c4ba28f3a0.jpg");
+	sourceimg = imread("D:\\图片\\xhs\\XHS_164492201799301022f01kj447s26nyy010s7n4i0mnf46a.jpg");
 	if (sourceimg.empty())
 	{
 		cout << "读取错误" << endl;
