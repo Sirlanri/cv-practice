@@ -2,8 +2,8 @@
 int main()
 {
 	//readimg();
-	//greyTrans();
+	greyTrans();
 	//logTrans();
-	subtractTrans();
+	//subtractTrans();
 	return 0;
 }

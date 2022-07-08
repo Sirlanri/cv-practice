@@ -9,7 +9,7 @@ using namespace std;
 /*灰度反转*/
 void greyTrans()
 {
-	Mat sourceimg, outimg, greyimg;
+	Mat sourceimg, outimg, greyimg,verifyimg;
 	sourceimg = imread("D:\\图片\\xhs\\XHS_1608302862803120701da-2ca7-3818-863c-4ec3e6bf44dc.jpg");
 	if (sourceimg.empty())
 	{
@@ -34,6 +34,18 @@ void greyTrans()
 		}
 	}
 	imshow("out", outimg);
+
+	//验证
+	verifyimg = greyimg.clone();
+	for (int i = 0; i < greyimg.rows; i++)
+	{
+		for (int j = 0; j < greyimg.cols; j++)
+		{
+			//操作像素
+			verifyimg.at<uchar>(i, j) = 255 - outimg.at<uchar>(i, j);
+		}
+	}
+	imshow("verify", verifyimg);
 
 	waitKey(0);
 	return;
