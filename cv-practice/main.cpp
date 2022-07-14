@@ -6,5 +6,6 @@ int main()
 	//logTrans();
 	//subtractTrans();
 	moveTrans();
+	rotateTrans();
 	return 0;
 }

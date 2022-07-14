@@ -111,11 +111,26 @@ void moveTrans()
 	string imgurl = "D:\\图片\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
 	Mat sourceImg, movedImg;
 	sourceImg = imread(imgurl);
-	
+
 	//move为变换矩阵，2行3列？X轴+25，Y轴+30
 	Mat move = (Mat_<double>(2, 3) << 1, 0, 25, 0, 1, 10);
 	warpAffine(sourceImg, movedImg, move,sourceImg.size());
 	imshow("移动", movedImg);
 	waitKey();
 	return;
+}
+
+/*图像旋转*/
+void rotateTrans()
+{
+	string imgurl = "D:\\图片\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
+	Mat sourceImg, rotatedImg,rotate;
+	sourceImg = imread(imgurl);
+	//旋转矩阵 参数为 中心点、旋转角度、水平？？？
+	rotate = getRotationMatrix2D(Point((sourceImg.cols - 1) / 2, (sourceImg.rows - 1) / 2), 90, 1);
+	warpAffine(sourceImg, rotatedImg, rotate, sourceImg.size());
+	imshow("旋转", rotatedImg);
+	waitKey();
+	return;
+
 }

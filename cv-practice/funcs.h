@@ -17,3 +17,6 @@ void subtractTrans();
 
 //移动
 void moveTrans();
+
+//旋转
+void rotateTrans();
