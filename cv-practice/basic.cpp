@@ -105,6 +105,7 @@ void subtractTrans()
 
 }
 
+/*Í¼ÏñÒÆ¶¯*/
 void moveTrans()
 {
 	string imgurl = "D:\\Í¼Æ¬\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
