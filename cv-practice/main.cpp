@@ -7,6 +7,7 @@ int main()
 	//subtractTrans();
 	//moveTrans();
 	//rotateTrans();
-	flipTrans();
+	//flipTrans();
+	posiTrans();
 	return 0;
 }

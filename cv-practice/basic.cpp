@@ -150,3 +150,16 @@ void flipTrans()
 	waitKey();
 	return;
 }
+
+/*×ªÖÃ±ä»»*/
+void posiTrans()
+{
+	string imgurl = "D:\\Í¼Æ¬\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
+	Mat sourceImg, outImg;
+	sourceImg = imread(imgurl);
+	//XYÖáÏñËØ»¥»»
+	transpose(sourceImg, outImg);
+	imshow("×ªÖÃ±ä»»", outImg);
+	waitKey();
+	return;
+}

@@ -23,3 +23,6 @@ void rotateTrans();
 
 //翻转
 void flipTrans();
+
+//转置
+void posiTrans();
