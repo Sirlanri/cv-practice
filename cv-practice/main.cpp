@@ -5,7 +5,8 @@ int main()
 	//greyTrans();
 	//logTrans();
 	//subtractTrans();
-	moveTrans();
-	rotateTrans();
+	//moveTrans();
+	//rotateTrans();
+	flipTrans();
 	return 0;
 }

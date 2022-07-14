@@ -134,3 +134,19 @@ void rotateTrans()
 	return;
 
 }
+
+/*翻转*/
+void flipTrans()
+{
+	string imgurl = "D:\\图片\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
+	Mat sourceImg, outImg1,outImg2,outImg3;
+	sourceImg = imread(imgurl);
+	flip(sourceImg, outImg1, 0);
+	flip(sourceImg, outImg2, 1);
+	flip(sourceImg, outImg3, -1);
+	imshow("上下翻转", outImg1);
+	imshow("左右翻转", outImg2);
+	imshow("对角线翻转", outImg3);
+	waitKey();
+	return;
+}

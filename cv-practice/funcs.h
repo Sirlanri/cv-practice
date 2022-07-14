@@ -20,3 +20,6 @@ void moveTrans();
 
 //旋转
 void rotateTrans();
+
+//翻转
+void flipTrans();
