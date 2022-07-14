@@ -14,3 +14,6 @@ void logTrans();
 
 //背景相减
 void subtractTrans();
+
+//移动
+void moveTrans();
