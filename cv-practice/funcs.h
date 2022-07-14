@@ -26,3 +26,6 @@ void flipTrans();
 
 //转置
 void posiTrans();
+
+//缩放
+void resizeTrans();

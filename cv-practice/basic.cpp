@@ -163,3 +163,15 @@ void posiTrans()
 	waitKey();
 	return;
 }
+
+/*Ëõ·Å*/
+void resizeTrans()
+{
+	string imgurl = "D:\\Í¼Æ¬\\xhs\\XHS_16174260196810d6143e5-342a-357f-a0ee-ef27ce75ab46.jpg";
+	Mat sourceImg, outImg;
+	sourceImg = imread(imgurl);
+	resize(sourceImg, outImg, Size(0, 0), 3, 0.5);
+	imshow("Ëõ·Å",outImg);
+	waitKey();
+	return;
+}

@@ -8,6 +8,7 @@ int main()
 	//moveTrans();
 	//rotateTrans();
 	//flipTrans();
-	posiTrans();
+	//posiTrans();
+	resizeTrans();
 	return 0;
 }
