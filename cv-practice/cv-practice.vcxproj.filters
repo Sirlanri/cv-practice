@@ -24,6 +24,9 @@
     <ClCompile Include="basic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="areaEnhance.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcs.h">

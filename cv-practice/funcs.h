@@ -29,3 +29,6 @@ void posiTrans();
 
 //缩放
 void resizeTrans();
+
+//直方图均衡
+void histogramTrans();

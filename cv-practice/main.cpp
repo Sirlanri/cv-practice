@@ -9,6 +9,7 @@ int main()
 	//rotateTrans();
 	//flipTrans();
 	//posiTrans();
-	resizeTrans();
+	//resizeTrans();
+	histogramTrans();
 	return 0;
 }
