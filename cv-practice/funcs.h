@@ -38,3 +38,6 @@ void smoothFilterTrans();
 
 //一阶导边缘检测
 void gradientDet();
+
+//拉普拉斯锐化 二阶导
+void lapDet();

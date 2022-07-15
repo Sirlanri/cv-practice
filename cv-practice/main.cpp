@@ -12,6 +12,7 @@ int main()
 	//resizeTrans();
 	//histogramTrans();
 	//smoothFilterTrans();
-	gradientDet();
+	//gradientDet();
+	lapDet();
 	return 0;
 }

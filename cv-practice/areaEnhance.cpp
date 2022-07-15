@@ -85,3 +85,26 @@ void gradientDet()
 	waitKey();
 	return;
 }
+
+/*拉普拉斯算子锐化*/
+void lapDet()
+{
+	Mat srcImg, outImg;
+	string imgurl = "C:\\my\\截图\\QQ截图20220715092337.jpg";
+	srcImg = imread(imgurl);
+
+	//高斯模糊
+	Mat blurImg;
+	GaussianBlur(srcImg, blurImg, Size(3, 3),
+		0, 0);
+	//灰度变换
+	Mat grayImg;
+	cvtColor(blurImg, grayImg, COLOR_BGR2GRAY);
+
+	//拉普拉斯边缘检测
+	Laplacian(grayImg, outImg, CV_8U, 3
+		, 1, 0, BORDER_DEFAULT);
+	imshow("拉普拉斯", outImg);
+	waitKey();
+	return;
+}
