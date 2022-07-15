@@ -13,6 +13,7 @@ int main()
 	//histogramTrans();
 	//smoothFilterTrans();
 	//gradientDet();
-	lapDet();
+	//lapDet();
+	contrastLinerDet();
 	return 0;
 }

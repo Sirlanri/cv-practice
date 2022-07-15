@@ -41,3 +41,6 @@ void gradientDet();
 
 //拉普拉斯锐化 二阶导
 void lapDet();
+
+//对比度拉伸
+void contrastLinerDet();

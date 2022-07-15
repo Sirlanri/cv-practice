@@ -115,3 +115,39 @@ void lapDet()
 	waitKey();
 	return;
 }
+
+/*对比度拉伸，均匀变暗模式*/
+void contrastLinerDet()
+{
+	Mat srcImg, outImg, tempRgbImg;
+	string imgurl = "D:\\图片\\xhs\\XHS_16210051495193f56dd56-2e11-3660-97d7-07488a16fe7c.jpg";
+	srcImg = imread(imgurl);
+
+	//RGB分离，每个通道单独处理
+	vector<Mat>channels;
+	split(srcImg, channels);
+
+	//三个通道分别遍历
+	for (int c = 0; c < 3; c++)
+	{
+		//X轴
+		for (int x = 0; x < channels[c].rows; x++)
+		{	
+			//Y轴
+			for (int y = 0; y < channels[c].cols; y++)
+			{
+				//该点初始值
+				uchar *num = &channels[c].at<uchar>(x, y);
+				//均匀变暗
+				*num = *num / 2;
+			}
+		}
+	}
+
+	//通道合并
+	merge(channels, outImg);
+
+	imshow("均匀变暗", outImg);
+	waitKey();
+	return;
+}
