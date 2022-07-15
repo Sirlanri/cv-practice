@@ -15,9 +15,14 @@ void histogramTrans()
 	//色彩空间转换Ycrcb
 	cvtColor(srcImg, tempycrcb, COLOR_BGR2YCrCb);
 	vector<Mat>channels;
+	//通道分离
 	split(tempycrcb, channels);
-	//直方图均衡化
+
+	/*直方图均衡化
+	对YCrBr来说，第一通道是亮度数据，本直方图只对亮度进行调整
+	所以只需要操作第一个通道*/
 	equalizeHist(channels[0], channels[0]);
+	//合并通道
 	merge(channels, tempycrcb);
 	cvtColor(tempycrcb, outImg, COLOR_YCrCb2BGR);
 	imshow("直方图均衡", outImg);
@@ -32,7 +37,8 @@ void smoothFilterTrans()
 	string imgurl = "C:\\my\\截图\\QQ截图20220715084643.jpg";
 	srcImg = imread(imgurl);
 
-	//线性滤波操作
+	/*线性滤波操作
+	ddepth:图像深度，-1表示图像原深度，ksize为内核大小*/
 	boxFilter(srcImg, boxblurImg, -1, Size(7, 7));
 	blur(srcImg, blurImg, Size(7, 7));
 	imshow("方框滤波", boxblurImg);
@@ -78,6 +84,7 @@ void gradientDet()
 		for (int col = 0; col < gradX.cols; col++) {
 			int gX = gradX.at<uchar>(row, col);
 			int gY = gradY.at<uchar>(row, col);
+			//防止图像过饱和，或者叫防溢出？超过255的值都转换为255
 			gradXY.at<uchar>(row, col) = saturate_cast<uchar>(gX + gY);
 		}
 	}
