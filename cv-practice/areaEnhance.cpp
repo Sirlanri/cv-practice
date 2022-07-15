@@ -24,3 +24,23 @@ void histogramTrans()
 	waitKey();
 	return;
 }
+
+/*平滑滤波*/
+void smoothFilterTrans()
+{
+	Mat srcImg, medianImg,blurImg,boxblurImg;
+	string imgurl = "C:\\my\\截图\\QQ截图20220715084643.jpg";
+	srcImg = imread(imgurl);
+
+	//线性滤波操作
+	boxFilter(srcImg, boxblurImg, -1, Size(7, 7));
+	blur(srcImg, blurImg, Size(7, 7));
+	imshow("方框滤波", boxblurImg);
+	imshow("均值滤波", blurImg);
+
+	//非线性滤波：中值滤波
+	medianBlur(srcImg, medianImg, 7);
+	imshow("中值滤波", medianImg);
+	waitKey();
+	return;
+}

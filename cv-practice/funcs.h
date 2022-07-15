@@ -32,3 +32,6 @@ void resizeTrans();
 
 //直方图均衡
 void histogramTrans();
+
+//中值滤波
+void smoothFilterTrans();

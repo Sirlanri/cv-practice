@@ -10,6 +10,7 @@ int main()
 	//flipTrans();
 	//posiTrans();
 	//resizeTrans();
-	histogramTrans();
+	//histogramTrans();
+	smoothFilterTrans();
 	return 0;
 }
