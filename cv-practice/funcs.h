@@ -35,3 +35,6 @@ void histogramTrans();
 
 //中值滤波
 void smoothFilterTrans();
+
+//一阶导边缘检测
+void gradientDet();

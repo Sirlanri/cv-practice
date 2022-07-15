@@ -11,6 +11,7 @@ int main()
 	//posiTrans();
 	//resizeTrans();
 	//histogramTrans();
-	smoothFilterTrans();
+	//smoothFilterTrans();
+	gradientDet();
 	return 0;
 }

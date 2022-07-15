@@ -44,3 +44,44 @@ void smoothFilterTrans()
 	waitKey();
 	return;
 }
+
+/*梯度法边缘检测*/
+void gradientDet()
+{
+	Mat srcImg, outImg;
+	string imgurl = "C:\\my\\截图\\QQ截图20220715092337.jpg";
+	srcImg = imread(imgurl);
+
+	//高斯模糊
+	Mat blurImg;
+	GaussianBlur(srcImg, blurImg, Size(3, 3),
+		0, 0);
+	//灰度变换
+	Mat grayImg;
+	cvtColor(blurImg, grayImg, COLOR_BGR2GRAY);
+
+	//求方向梯度
+	Mat gradX, gradY;
+	Sobel(grayImg, gradX, CV_16S, 1,0,3);
+	Sobel(grayImg, gradY, CV_16S, 0, 1, 3);
+	//计算绝对值并转换为8bit （图像256位）
+	convertScaleAbs(gradX, gradX);
+	convertScaleAbs(gradY, gradY);
+
+	//混合图像
+	Mat dst;
+	addWeighted(gradX, 0.5, gradY, 0.5, 0, dst);
+	//？
+	imshow("混合", dst);
+	Mat gradXY = Mat(gradX.size(), gradX.type());
+	for (int row = 0; row < gradX.rows; row++) {
+		for (int col = 0; col < gradX.cols; col++) {
+			int gX = gradX.at<uchar>(row, col);
+			int gY = gradY.at<uchar>(row, col);
+			gradXY.at<uchar>(row, col) = saturate_cast<uchar>(gX + gY);
+		}
+	}
+	imshow("GradXY", gradXY);
+	waitKey();
+	return;
+}
