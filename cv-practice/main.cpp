@@ -14,6 +14,7 @@ int main()
 	//smoothFilterTrans();
 	//gradientDet();
 	//lapDet();
-	contrastLinerDet();
+	//contrastLinerDet();
+	greySliceDet();
 	return 0;
 }

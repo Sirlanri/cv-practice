@@ -44,3 +44,6 @@ void lapDet();
 
 //对比度拉伸
 void contrastLinerDet();
+
+//灰度切片
+void greySliceDet();

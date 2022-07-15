@@ -151,3 +151,40 @@ void contrastLinerDet()
 	waitKey();
 	return;
 }
+
+/*窗切片（灰度切片） 
+本函数只保留亮度150-200的像素*/
+void greySliceDet()
+{
+	Mat srcImg, outImg, tempImg;
+	string imgurl = "D:\\图片\\xhs\\XHS_16210051495193f56dd56-2e11-3660-97d7-07488a16fe7c.jpg";
+	srcImg = imread(imgurl);
+
+	//RGB转YCrBr 
+	//艹这个破名字好难记ヽ(ー_ー)ノ
+	cvtColor(srcImg, tempImg, COLOR_RGB2YCrCb);
+	//分离通道
+	vector<Mat>channels;
+	split(tempImg, channels);
+
+	for (int i = 0; i < channels[0].rows; i++)
+	{
+		for (int j = 0; j < channels[0].cols; j++)
+		{
+			//该点初始值
+			uchar *num = &channels[0].at<uchar>(i,j);
+			if (*num<150 || *num>200)
+			{
+				//如果亮度过小或过大，则变成0
+				*num = 0;
+			}
+			
+		}
+	}
+
+	merge(channels, tempImg);
+	cvtColor(tempImg, outImg, COLOR_YCrCb2RGB);
+	imshow("灰度切片", outImg);
+	waitKey();
+	return;
+}
