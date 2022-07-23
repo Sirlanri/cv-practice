@@ -47,3 +47,6 @@ void contrastLinerDet();
 
 //灰度切片
 void greySliceDet();
+
+//简单傅里叶
+void normal_dft();

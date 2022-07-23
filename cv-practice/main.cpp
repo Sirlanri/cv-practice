@@ -15,6 +15,7 @@ int main()
 	//gradientDet();
 	//lapDet();
 	//contrastLinerDet();
-	greySliceDet();
+	//greySliceDet();
+	normal_dft();
 	return 0;
 }
