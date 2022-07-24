@@ -50,3 +50,6 @@ void greySliceDet();
 
 //简单傅里叶
 void normal_dft();
+
+//高斯（自带的）
+void gaussDefaultFilter();

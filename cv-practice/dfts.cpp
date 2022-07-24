@@ -76,3 +76,16 @@ void ricodft(Mat& srcImg, Mat& outImg, Mat& transImg)
 	q0.copyTo(tmp); q3.copyTo(q0); tmp.copyTo(q3);//左上与右下进行交换
 	q1.copyTo(tmp); q2.copyTo(q1); tmp.copyTo(q2);//右上与左下进行交换
 }
+
+/*高斯低通滤波器
+直接调用自带的函数*/
+void gaussDefaultFilter()
+{
+	Mat srcImg, outImg, transImg;
+	srcImg = imread("D:\\图片\\xhs\\XHS_165564086086901024t016i8ot3zj1gq0112stla2qu005r.jpg");
+	GaussianBlur(srcImg, transImg, Size(9, 9), 0);
+	imshow("高斯", transImg);
+	imshow("原图", srcImg);
+	waitKey();
+
+}
