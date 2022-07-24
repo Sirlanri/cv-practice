@@ -91,7 +91,8 @@ void gaussDefaultFilter()
 }
 
 /*高斯低通滤波器
-自己手撸代码（绝对不止是复制粘贴哦）*/
+自己手撸代码（绝对不止是复制粘贴哦）
+这玩意儿好像确实实现了高斯滤波，但我完全看不懂啊！不应该先傅里叶再应用H吗？*/
 void myGauss(int filterSize,Mat& srcImg,Mat& transImg)
 {
 	//感觉多此一举？直接传进一个不带&的参数不就好了？
