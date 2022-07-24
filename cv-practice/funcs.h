@@ -53,3 +53,6 @@ void normal_dft();
 
 //高斯（自带的）
 void gaussDefaultFilter();
+
+//高斯（手写1）
+void gaussFilter();

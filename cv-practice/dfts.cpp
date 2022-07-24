@@ -89,3 +89,48 @@ void gaussDefaultFilter()
 	waitKey();
 
 }
+
+/*高斯低通滤波器
+自己手撸代码（绝对不止是复制粘贴哦）*/
+void myGauss(int filterSize,Mat& srcImg,Mat& transImg)
+{
+	//感觉多此一举？直接传进一个不带&的参数不就好了？
+	transImg = srcImg.clone();
+	int k = (filterSize - 1) / 2;
+	for (int i = k; i < (srcImg.rows - k); i++)
+	{
+		for (int j = k; j < (srcImg.cols - k); j++)
+		{
+			double sum = 0.0;
+			double sum1 = 0.0;
+			double sigma = 7; //可调参数
+			double g;
+			for (int m = -k; m < k + 1; m++)
+			{
+				for (int n = -k; n < k + 1; n++)
+				{
+					//实现转移函数H(u,v)
+					g = exp(-(m * m + n * n) / (2 * sigma * sigma));
+					//这里就开始懵逼了
+					sum = sum + g * srcImg.at<uchar>(i + m, j + n);
+					sum1 = sum1 + g;
+				}
+			}
+			transImg.at<uchar>(i, j) = (uchar)round(sum / sum1);
+
+		}
+	}
+}
+
+/*手写高斯滤波器*/
+void gaussFilter()
+{
+	Mat srcImg, outImg;
+	srcImg = imread("D:\\图片\\xhs\\XHS_165564086086901024t016i8ot3zj1gq0112stla2qu005r.jpg");
+	cvtColor(srcImg, srcImg, COLOR_BGR2GRAY);
+	myGauss(9,srcImg, outImg);
+	imshow("原图", srcImg);
+	imshow("手撕高斯", outImg);
+	waitKey();
+
+}

@@ -17,6 +17,7 @@ int main()
 	//contrastLinerDet();
 	//greySliceDet();
 	//normal_dft();
-	gaussDefaultFilter();
+	//gaussDefaultFilter();
+	gaussFilter();
 	return 0;
 }
