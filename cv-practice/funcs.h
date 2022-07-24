@@ -56,3 +56,6 @@ void gaussDefaultFilter();
 
 //高斯（手写1）
 void gaussFilter();
+
+//高斯（复制的2）
+void dftFilter2();

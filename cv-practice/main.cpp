@@ -18,6 +18,7 @@ int main()
 	//greySliceDet();
 	//normal_dft();
 	//gaussDefaultFilter();
-	gaussFilter();
+	//gaussFilter();
+	dftFilter2();
 	return 0;
 }
