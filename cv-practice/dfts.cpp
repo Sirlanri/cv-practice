@@ -97,14 +97,17 @@ void myGauss(int filterSize,Mat& srcImg,Mat& transImg)
 	//感觉多此一举？直接传进一个不带&的参数不就好了？
 	transImg = srcImg.clone();
 	int k = (filterSize - 1) / 2;
+	//横向像素
 	for (int i = k; i < (srcImg.rows - k); i++)
 	{
+		//纵向
 		for (int j = k; j < (srcImg.cols - k); j++)
 		{
 			double sum = 0.0;
 			double sum1 = 0.0;
 			double sigma = 7; //可调参数
 			double g;
+			//里面这俩循环就给我整蒙圈了_(:з」∠)_
 			for (int m = -k; m < k + 1; m++)
 			{
 				for (int n = -k; n < k + 1; n++)
