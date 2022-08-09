@@ -30,6 +30,9 @@
     <ClCompile Include="dfts.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="wavelet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcs.h">
