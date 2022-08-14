@@ -19,6 +19,7 @@ int main()
 	//normal_dft();
 	//gaussDefaultFilter();
 	//gaussFilter();
-	dftFilter2();
+	//dftFilter2();
+	singleThres();
 	return 0;
 }

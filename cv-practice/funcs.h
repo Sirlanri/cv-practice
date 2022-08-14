@@ -59,3 +59,6 @@ void gaussFilter();
 
 //高斯（复制的2）
 void dftFilter2();
+
+//阈值化分割
+void singleThres();

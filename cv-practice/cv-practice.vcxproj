@@ -131,6 +131,7 @@
     <ClCompile Include="areaEnhance.cpp" />
     <ClCompile Include="basic.cpp" />
     <ClCompile Include="dfts.cpp" />
+    <ClCompile Include="threshold.cpp" />
     <ClCompile Include="wavelet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openimg.cpp" />
