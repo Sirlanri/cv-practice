@@ -29,3 +29,21 @@ int harrScale(float x)
 	}
 	return 0;
 }
+
+/*小波变换 控制函数*/
+void waveletTrans()
+{
+	Mat srcImg, outImg, transImg;
+	//特意用PS做的图，256*256,8bit灰度图
+	srcImg = imread("E:\\计算机视觉2.jpg");
+	//克隆一下源图像，便于进行对比
+	transImg = srcImg.clone();
+
+	for (int i = 0; i < srcImg.rows; i++)
+	{
+		for (int j = 0; j < srcImg.cols; j++)
+		{
+			transImg.at<uchar>(i, j) = 0;
+		}
+	}
+}
