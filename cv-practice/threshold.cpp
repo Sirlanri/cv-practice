@@ -11,7 +11,7 @@ int value = 125;
 //过程图和最终渲染出的图,TransImg不应该被修改
 Mat TransImg,OutImg;
 
-/*阈值化分割，执行函数*/
+/*阈值化分割，执行函数，适用于白底*/
 void singleThresDo(int,void* param)
 {
 	for (int i = 0; i < TransImg.rows; i++)
@@ -32,16 +32,15 @@ void singleThresDo(int,void* param)
 	imshow("阈值化", OutImg);
 }
 
-/*最简单的阈值化分割 只分割一次*/
+/*最简单的阈值化分割 只分割一次，阈值滑块输入*/
 void singleThres()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("C:\\my\\截图\\QQ截图20220715092337.jpg");
+	srcImg = imread("D:\\图片\\xhs\\XHS_1637717979603a0e53773-dbc0-393a-b102-4e27310656b5.jpg");
 	cvtColor(srcImg, TransImg, COLOR_BGR2GRAY);
 	OutImg = TransImg.clone();
 	namedWindow("阈值化");
 	
-
 	//创建输入滑块
 	createTrackbar("灰度阈值", "阈值化", &value, 255, singleThresDo);
 	singleThresDo(125,NULL);
