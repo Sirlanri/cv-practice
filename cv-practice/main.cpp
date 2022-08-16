@@ -20,6 +20,8 @@ int main()
 	//gaussDefaultFilter();
 	//gaussFilter();
 	//dftFilter2();
-	singleThres();
+	//singleThres();
+	//halfThres();
+	findThresByMaxMin();
 	return 0;
 }

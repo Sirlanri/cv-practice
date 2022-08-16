@@ -62,3 +62,9 @@ void dftFilter2();
 
 //阈值化分割
 void singleThres();
+
+//半阈值化分割
+void halfThres();
+
+//利用极大值极小值寻找谷底和阈值
+void findThresByMaxMin();
