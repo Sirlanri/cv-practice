@@ -118,7 +118,40 @@ int * generateHistogram(Mat img)
 void findThresByMaxMin()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("E:\\opencv4.png");
+	srcImg = imread("E:\\opencv4.png",IMREAD_GRAYSCALE);
 	int* hist = generateHistogram(srcImg);
+	
+	
+	int maxnum=hist[0], minnum = 44, maxnum2 = 0, minindex = 0;
+	for (int i = 1; i < 255; i++)
+	{	
+		//寻找局部极大值
+		if (hist[i]>hist[i-1] && hist[i]>hist[i+1])
+		{
+			if (maxnum<hist[i])
+			{
+				maxnum = hist[i];
+			}
+			else
+			{
+				if (maxnum2<hist[i])
+				{
+					maxnum2 = hist[i];
+				}
+			}
+		}
+		//寻找局部极小值
+		if (hist[i]<minnum)
+		{	
+			minnum = hist[i];
+			minindex = i;
+		}
+	}
+	cout << "极大值为 " << maxnum << " " << maxnum2 << endl;
+	cout << "极小值为 " << minnum << " 下标:" << minindex<<endl;
 
+	//计算K
+	int k = minnum / maxnum2;
+	cout << "K: " << k << endl;
+	return;
 }
