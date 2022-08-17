@@ -22,6 +22,7 @@ int main()
 	//dftFilter2();
 	//singleThres();
 	//halfThres();
-	findThresByMaxMin();
+	//findThresByMaxMin();
+	binaryLikeThres();
 	return 0;
 }

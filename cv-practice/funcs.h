@@ -68,3 +68,6 @@ void halfThres();
 
 //利用极大值极小值寻找谷底和阈值
 void findThresByMaxMin();
+
+//类二值图像阈值的选取
+void binaryLikeThres();

@@ -10,6 +10,8 @@ using namespace std;
 int value = 125;
 //过程图和最终渲染出的图,TransImg不应该被修改
 Mat TransImg,OutImg;
+//直方图数据列表
+int Hist[256];
 
 /*阈值化分割，执行函数，适用于白底*/
 void singleThresDo(int,void* param)
@@ -151,4 +153,79 @@ void findThresByMaxMin()
 	int k = minnum / maxnum2;
 	cout << "K: " << k << endl;
 	return;
+}
+
+/*生成直方图，直接调用全局变量Hist*/
+void generateHistogram2(Mat img)
+{
+	for (int i = 0; i < img.rows; i++)
+	{
+		for (int j = 0; j < img.cols; j++)
+		{
+			int pix = img.at<uchar>(i, j);
+			Hist[pix]++;
+		}
+	}
+}
+
+/*类二值图像阈值的选取 回调函数
+* 白底黑字，灰度值大的（纸面）全部设置255，灰度值小（黑色文字）设置为0
+*/
+void binaryLikeThresDo(int,void* param)
+{
+	OutImg = TransImg.clone();
+
+	//通过直方图数据，获取满足百分比的阈值
+	int total = TransImg.cols * TransImg.rows;	//总像素数目
+	int count = 0;	//记录已统计的数目
+	int index=0; //记录阈值的下标
+	double perValue = (double)value / 100;
+	int pixNum = total * perValue;	//阈值以下的像素数应该大于pixNum
+	for (int i = 0; i < 256; i++)
+	{	
+		if (count>=pixNum)
+		{
+			index = i;
+			break;
+		}
+		else
+		{
+			count += Hist[i];
+		}
+	}
+
+	for (int i = 0; i < TransImg.rows; i++)
+	{
+		for (int j = 0; j < TransImg.cols; j++)
+		{
+			uchar pix = TransImg.at<uchar>(i, j);
+			if (pix >= index)
+			{
+				OutImg.at<uchar>(i, j) = 255;
+			}
+			else
+			{
+				OutImg.at<uchar>(i, j) = 0;
+			}
+		}
+	}
+	imshow("类二值", OutImg);
+}
+/*类二值图像阈值的选取，控制函数
+* 专门用于处理文本照片，通过手动调节滑块，控制文字占比，实时输出结果，选择最优解
+*/
+void binaryLikeThres()
+{
+	Mat srcImg, grayImg;
+	srcImg = imread("C:\\my\\截图\\QQ图片20220817095728.jpg");
+	cvtColor(srcImg, grayImg, COLOR_BGR2GRAY);
+	TransImg = grayImg.clone();
+	generateHistogram2(TransImg);
+	namedWindow("类二值", WINDOW_AUTOSIZE);
+	//创建滑块
+	value = 50;
+	createTrackbar("文字百分比", "类二值", &value, 100, binaryLikeThresDo);
+
+	imshow("类二值", TransImg);
+	waitKey();
 }
