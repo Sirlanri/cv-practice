@@ -96,8 +96,6 @@ void halfThres()
 int * generateHistogram(Mat img)
 {
 	//hist即为所需的直方图数组
-	//int (*hist)= new int[256];
-	//cout << *hist << endl;
 	int arr[256] = {};
 	int (*hist) = arr;
 
@@ -120,7 +118,6 @@ void findThresByMaxMin()
 	Mat srcImg, grayImg;
 	srcImg = imread("E:\\opencv4.png",IMREAD_GRAYSCALE);
 	int* hist = generateHistogram(srcImg);
-	
 	
 	int maxnum=hist[0], minnum = 44, maxnum2 = 0, minindex = 0;
 	for (int i = 1; i < 255; i++)
