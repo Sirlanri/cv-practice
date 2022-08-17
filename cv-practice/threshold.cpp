@@ -94,12 +94,12 @@ void halfThres()
 /*生成图像的直方图
 * 传入Mat，返回数组，数组角标为[0,255]，值为其对应的数据
 * 数组的形式为第一个int的指针（辣鸡C艹）
+* 注：此函数存在问题，不可用，应使用generateHistogram2代替
 */
 int * generateHistogram(Mat img)
 {
 	//hist即为所需的直方图数组
 	int arr[256] = {};
-	int (*hist) = arr;
 
 	for (int i = 0; i < img.rows; i++)
 	{	
@@ -109,7 +109,7 @@ int * generateHistogram(Mat img)
 			arr[pix]++;
 		}
 	}
-	return hist;
+	return arr;
 }
 
 /*利用极大值和极小值寻找谷底及其阈值
@@ -228,4 +228,57 @@ void binaryLikeThres()
 
 	imshow("类二值", TransImg);
 	waitKey();
+}
+
+/*迭代式阈值选取
+* 首选获取直方图数组，然后计算灰度均值，随后不断迭代逼近
+*/
+void iterativeThres()
+{
+	Mat srcImg, grayImg;
+	srcImg = imread("C:\\my\\截图\\QQ图片20220817095728.jpg");
+	cvtColor(srcImg, grayImg, COLOR_BGR2GRAY);
+	generateHistogram2(grayImg);
+	int t=128;
+	
+	int oldt=0,u1,u2;
+	//将t设置为初始阈值
+	while (true)
+	{	
+		//u为总灰度数
+		u1 = u2 = 0;
+		//pix为像素数目
+		int pix1=0 , pix2 = 0;
+		for (int i = 0; i < 256; i++)
+		{	
+			if (i<=t)
+			{
+				//u1为小于阈值
+				u1 += i * Hist[i];
+				pix1 += Hist[i];
+			}
+			else
+			{
+				//u2为大于阈值的部分
+				u2 += i * Hist[i];
+				pix2 += Hist[i];
+			}
+		}
+		
+		//aveu为两个区域的平均灰度值，使用un的总灰度值/像素数
+		int aveu1 = u1 / pix1;
+		int aveu2 = u2 / pix2;
+		t = (aveu1+	aveu2 )/ 2;
+		if (oldt==t)
+		{
+			break;
+		}
+		else 
+		{
+			oldt = t;
+		}
+	}
+
+	cout << "阈值为：" << t << endl;
+	return;
 }

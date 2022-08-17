@@ -23,6 +23,7 @@ int main()
 	//singleThres();
 	//halfThres();
 	//findThresByMaxMin();
-	binaryLikeThres();
+	//binaryLikeThres();
+	iterativeThres();
 	return 0;
 }

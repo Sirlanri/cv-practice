@@ -71,3 +71,6 @@ void findThresByMaxMin();
 
 //类二值图像阈值的选取
 void binaryLikeThres();
+
+//迭代式阈值选取
+void iterativeThres();
