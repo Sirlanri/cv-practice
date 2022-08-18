@@ -132,6 +132,7 @@
     <ClCompile Include="basic.cpp" />
     <ClCompile Include="dfts.cpp" />
     <ClCompile Include="threshold.cpp" />
+    <ClCompile Include="trackSeg.cpp" />
     <ClCompile Include="wavelet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openimg.cpp" />
