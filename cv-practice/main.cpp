@@ -24,6 +24,7 @@ int main()
 	//halfThres();
 	//findThresByMaxMin();
 	//binaryLikeThres();
-	iterativeThres();
+	//iterativeThres();
+	rasterTracking();
 	return 0;
 }

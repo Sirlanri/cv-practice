@@ -74,3 +74,6 @@ void binaryLikeThres();
 
 //迭代式阈值选取
 void iterativeThres();
+
+//光栅跟踪法
+void rasterTracking();

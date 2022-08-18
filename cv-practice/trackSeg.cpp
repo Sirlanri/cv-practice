@@ -84,48 +84,60 @@ void rasterTracking()
 		{2,0,5,0,2,0,6,2,6,0},
 		{6,4,0,3,0,2,7,3,4,2}
 	};
-	int out[8][10];
+	int out[8][10]{};
 
 	//检测阈值
 	int d = 7;
 	//跟踪阈值
 	int t = 4;
 
-	//高于检测阈值的点坐标
-	int detectPoints[20][2];
-	int index = 0;
 	//第一次扫描，将大于检测阈值的点加入队列中
-	cout << "检测点为：";
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i <= 7; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{	
 			if (src[i][j]>=d)
 			{	
-				cout<<"检测点" << src[i][j] << endl;
-				detectPoints[index][0] = i;
-				detectPoints[index][1] = j;
-
-				bool flag = true;
-				while (flag)
-				{	
-					//寻找跟踪阈值点
-					for (int k = -1; k <= 1; k++)
-					{
-						if (src[i + 1][j + k] >= t)
-						{
-							cout
-						}
-					}
-				}
-
-				
+				out[i][j] = 1;
 			}
 		}
 	}
 
 	//第二次扫描，查找跟踪阈值点
-	int trackPoints[50][2];
-	index = 0;
+	for (int i = 0; i <= 6; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (out[i][j] == 1)
+			{
+				//搜索下一行对应的三个位置
+				for (int k = -1; k <= 1; k++)
+				{	
+					//防止横坐标溢出
+					if (j+k>=10)
+					{
+						break;
+					}
+					if (src[i+1][j+k]>=t)
+					{
+						out[i + 1][j+k] = 1;
+					}
+				}
+			}
+		}
+	}
 
+	//一行一行输出结果
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (out[i][j]==1)
+			{
+				cout << src[i][j] << " ";
+			}
+		}
+		cout << endl;
+	}
+	return;
 }
