@@ -25,6 +25,7 @@ int main()
 	//findThresByMaxMin();
 	//binaryLikeThres();
 	//iterativeThres();
-	rasterTracking();
+	//rasterTracking();
+	LBP3Box();
 	return 0;
 }

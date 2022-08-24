@@ -77,3 +77,6 @@ void iterativeThres();
 
 //光栅跟踪法
 void rasterTracking();
+
+//LBP
+void LBP3Box();

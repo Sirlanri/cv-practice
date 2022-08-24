@@ -1,4 +1,4 @@
-/*ãĞÖµ·Ö¸îÏà¹Øº¯Êı*/
+ï»¿/*é˜ˆå€¼åˆ†å‰²ç›¸å…³å‡½æ•°*/
 
 #include<iostream>
 #include<opencv2/opencv.hpp>
@@ -6,14 +6,14 @@
 using namespace cv;
 using namespace std;
 
-//»¬¿éµÄÖµ
+//æ»‘å—çš„å€¼
 int value = 125;
-//¹ı³ÌÍ¼ºÍ×îÖÕäÖÈ¾³öµÄÍ¼,TransImg²»Ó¦¸Ã±»ĞŞ¸Ä
+//è¿‡ç¨‹å›¾å’Œæœ€ç»ˆæ¸²æŸ“å‡ºçš„å›¾,TransImgä¸åº”è¯¥è¢«ä¿®æ”¹
 Mat TransImg,OutImg;
-//Ö±·½Í¼Êı¾İÁĞ±í
+//ç›´æ–¹å›¾æ•°æ®åˆ—è¡¨
 int Hist[256];
 
-/*ãĞÖµ»¯·Ö¸î£¬Ö´ĞĞº¯Êı£¬ÊÊÓÃÓÚ°×µ×*/
+/*é˜ˆå€¼åŒ–åˆ†å‰²ï¼Œæ‰§è¡Œå‡½æ•°ï¼Œé€‚ç”¨äºç™½åº•*/
 void singleThresDo(int,void* param)
 {
 	for (int i = 0; i < TransImg.rows; i++)
@@ -31,28 +31,28 @@ void singleThresDo(int,void* param)
 			}
 		}
 	}
-	imshow("ãĞÖµ»¯", OutImg);
+	imshow("é˜ˆå€¼åŒ–", OutImg);
 }
 
-/*×î¼òµ¥µÄãĞÖµ»¯·Ö¸î Ö»·Ö¸îÒ»´Î£¬ãĞÖµ»¬¿éÊäÈë*/
+/*æœ€ç®€å•çš„é˜ˆå€¼åŒ–åˆ†å‰² åªåˆ†å‰²ä¸€æ¬¡ï¼Œé˜ˆå€¼æ»‘å—è¾“å…¥*/
 void singleThres()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("D:\\Í¼Æ¬\\xhs\\XHS_1637717979603a0e53773-dbc0-393a-b102-4e27310656b5.jpg");
+	srcImg = imread("D:\\å›¾ç‰‡\\xhs\\XHS_1637717979603a0e53773-dbc0-393a-b102-4e27310656b5.jpg");
 	cvtColor(srcImg, TransImg, COLOR_BGR2GRAY);
 	OutImg = TransImg.clone();
-	namedWindow("ãĞÖµ»¯");
+	namedWindow("é˜ˆå€¼åŒ–");
 	
-	//´´½¨ÊäÈë»¬¿é
-	createTrackbar("»Ò¶ÈãĞÖµ", "ãĞÖµ»¯", &value, 255, singleThresDo);
+	//åˆ›å»ºè¾“å…¥æ»‘å—
+	createTrackbar("ç°åº¦é˜ˆå€¼", "é˜ˆå€¼åŒ–", &value, 255, singleThresDo);
 	singleThresDo(125,NULL);
-	imshow("ãĞÖµ»¯", TransImg);
+	imshow("é˜ˆå€¼åŒ–", TransImg);
 	waitKey();
 }
 
-/*°ëãĞÖµ»¯·Ö¸î Ö´ĞĞº¯Êı£¬ÊÊÓÃÓÚ°×µ×
-* Ğ¡ÓÚãĞÖµµÄ²¿·ÖÈ«²¿ÉèÖÃÎª0£¬Ê£ÏÂµÄÏñËØÖµÈ«²¿±£Áô
-* ÓëÆäËûº¯Êı¹²ÏívalueºÍtransImg£¬OutImg*/
+/*åŠé˜ˆå€¼åŒ–åˆ†å‰² æ‰§è¡Œå‡½æ•°ï¼Œé€‚ç”¨äºç™½åº•
+* å°äºé˜ˆå€¼çš„éƒ¨åˆ†å…¨éƒ¨è®¾ç½®ä¸º0ï¼Œå‰©ä¸‹çš„åƒç´ å€¼å…¨éƒ¨ä¿ç•™
+* ä¸å…¶ä»–å‡½æ•°å…±äº«valueå’ŒtransImgï¼ŒOutImg*/
 void halfThresDo(int, void* param)
 {
 	for (int i = 0; i < TransImg.rows; i++)
@@ -70,35 +70,35 @@ void halfThresDo(int, void* param)
 			}
 		}
 	}
-	imshow("°ëãĞÖµ»¯", OutImg);
+	imshow("åŠé˜ˆå€¼åŒ–", OutImg);
 }
 
-/*°ëãĞÖµ»¯·Ö¸î ¿ØÖÆº¯Êı
-* ºÍãĞÖµ»¯·Ö¸î¹²ÏíÈ«¾Ö±äÁ¿£¬²»¿ÉÍ¬Ê±µ÷ÓÃÁ½¸öº¯Êı
+/*åŠé˜ˆå€¼åŒ–åˆ†å‰² æ§åˆ¶å‡½æ•°
+* å’Œé˜ˆå€¼åŒ–åˆ†å‰²å…±äº«å…¨å±€å˜é‡ï¼Œä¸å¯åŒæ—¶è°ƒç”¨ä¸¤ä¸ªå‡½æ•°
 */
 void halfThres()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("D:\\Í¼Æ¬\\xhs\\XHS_1637717979603a0e53773-dbc0-393a-b102-4e27310656b5.jpg");
+	srcImg = imread("D:\\å›¾ç‰‡\\xhs\\XHS_1637717979603a0e53773-dbc0-393a-b102-4e27310656b5.jpg");
 	cvtColor(srcImg, TransImg, COLOR_BGR2GRAY);
 	OutImg = TransImg.clone();
-	namedWindow("°ëãĞÖµ»¯");
+	namedWindow("åŠé˜ˆå€¼åŒ–");
 
-	//´´½¨ÊäÈë»¬¿é
-	createTrackbar("»Ò¶ÈãĞÖµ", "°ëãĞÖµ»¯", &value, 255, halfThresDo);
+	//åˆ›å»ºè¾“å…¥æ»‘å—
+	createTrackbar("ç°åº¦é˜ˆå€¼", "åŠé˜ˆå€¼åŒ–", &value, 255, halfThresDo);
 	halfThresDo(125, NULL);
-	imshow("°ëãĞÖµ»¯", TransImg);
+	imshow("åŠé˜ˆå€¼åŒ–", TransImg);
 	waitKey();
 }
 
-/*Éú³ÉÍ¼ÏñµÄÖ±·½Í¼
-* ´«ÈëMat£¬·µ»ØÊı×é£¬Êı×é½Ç±êÎª[0,255]£¬ÖµÎªÆä¶ÔÓ¦µÄÊı¾İ
-* Êı×éµÄĞÎÊ½ÎªµÚÒ»¸öintµÄÖ¸Õë£¨À±¼¦CÜ³£©
-* ×¢£º´Ëº¯Êı´æÔÚÎÊÌâ£¬²»¿ÉÓÃ£¬Ó¦Ê¹ÓÃgenerateHistogram2´úÌæ
+/*ç”Ÿæˆå›¾åƒçš„ç›´æ–¹å›¾
+* ä¼ å…¥Matï¼Œè¿”å›æ•°ç»„ï¼Œæ•°ç»„è§’æ ‡ä¸º[0,255]ï¼Œå€¼ä¸ºå…¶å¯¹åº”çš„æ•°æ®
+* æ•°ç»„çš„å½¢å¼ä¸ºç¬¬ä¸€ä¸ªintçš„æŒ‡é’ˆï¼ˆè¾£é¸¡Cè‰¹ï¼‰
+* æ³¨ï¼šæ­¤å‡½æ•°å­˜åœ¨é—®é¢˜ï¼Œä¸å¯ç”¨ï¼Œåº”ä½¿ç”¨generateHistogram2ä»£æ›¿
 */
 int * generateHistogram(Mat img)
 {
-	//hist¼´ÎªËùĞèµÄÖ±·½Í¼Êı×é
+	//histå³ä¸ºæ‰€éœ€çš„ç›´æ–¹å›¾æ•°ç»„
 	int arr[256] = {};
 
 	for (int i = 0; i < img.rows; i++)
@@ -112,8 +112,8 @@ int * generateHistogram(Mat img)
 	return arr;
 }
 
-/*ÀûÓÃ¼«´óÖµºÍ¼«Ğ¡ÖµÑ°ÕÒ¹Èµ×¼°ÆäãĞÖµ
-* ÊÊÓÃÓÚË«·åĞÎÖ±·½Í¼
+/*åˆ©ç”¨æå¤§å€¼å’Œæå°å€¼å¯»æ‰¾è°·åº•åŠå…¶é˜ˆå€¼
+* é€‚ç”¨äºåŒå³°å½¢ç›´æ–¹å›¾
 */
 void findThresByMaxMin()
 {
@@ -124,7 +124,7 @@ void findThresByMaxMin()
 	int maxnum=hist[0], minnum = 44, maxnum2 = 0, minindex = 0;
 	for (int i = 1; i < 255; i++)
 	{	
-		//Ñ°ÕÒ¾Ö²¿¼«´óÖµ
+		//å¯»æ‰¾å±€éƒ¨æå¤§å€¼
 		if (hist[i]>hist[i-1] && hist[i]>hist[i+1])
 		{
 			if (maxnum<hist[i])
@@ -139,23 +139,23 @@ void findThresByMaxMin()
 				}
 			}
 		}
-		//Ñ°ÕÒ¾Ö²¿¼«Ğ¡Öµ
+		//å¯»æ‰¾å±€éƒ¨æå°å€¼
 		if (hist[i]<minnum)
 		{	
 			minnum = hist[i];
 			minindex = i;
 		}
 	}
-	cout << "¼«´óÖµÎª " << maxnum << " " << maxnum2 << endl;
-	cout << "¼«Ğ¡ÖµÎª " << minnum << " ÏÂ±ê:" << minindex<<endl;
+	cout << "æå¤§å€¼ä¸º " << maxnum << " " << maxnum2 << endl;
+	cout << "æå°å€¼ä¸º " << minnum << " ä¸‹æ ‡:" << minindex<<endl;
 
-	//¼ÆËãK
+	//è®¡ç®—K
 	int k = minnum / maxnum2;
 	cout << "K: " << k << endl;
 	return;
 }
 
-/*Éú³ÉÖ±·½Í¼£¬Ö±½Óµ÷ÓÃÈ«¾Ö±äÁ¿Hist*/
+/*ç”Ÿæˆç›´æ–¹å›¾ï¼Œç›´æ¥è°ƒç”¨å…¨å±€å˜é‡Hist*/
 void generateHistogram2(Mat img)
 {
 	for (int i = 0; i < img.rows; i++)
@@ -168,19 +168,19 @@ void generateHistogram2(Mat img)
 	}
 }
 
-/*Àà¶şÖµÍ¼ÏñãĞÖµµÄÑ¡È¡ »Øµ÷º¯Êı
-* °×µ×ºÚ×Ö£¬»Ò¶ÈÖµ´óµÄ£¨Ö½Ãæ£©È«²¿ÉèÖÃ255£¬»Ò¶ÈÖµĞ¡£¨ºÚÉ«ÎÄ×Ö£©ÉèÖÃÎª0
+/*ç±»äºŒå€¼å›¾åƒé˜ˆå€¼çš„é€‰å– å›è°ƒå‡½æ•°
+* ç™½åº•é»‘å­—ï¼Œç°åº¦å€¼å¤§çš„ï¼ˆçº¸é¢ï¼‰å…¨éƒ¨è®¾ç½®255ï¼Œç°åº¦å€¼å°ï¼ˆé»‘è‰²æ–‡å­—ï¼‰è®¾ç½®ä¸º0
 */
 void binaryLikeThresDo(int,void* param)
 {
 	OutImg = TransImg.clone();
 
-	//Í¨¹ıÖ±·½Í¼Êı¾İ£¬»ñÈ¡Âú×ã°Ù·Ö±ÈµÄãĞÖµ
-	int total = TransImg.cols * TransImg.rows;	//×ÜÏñËØÊıÄ¿
-	int count = 0;	//¼ÇÂ¼ÒÑÍ³¼ÆµÄÊıÄ¿
-	int index=0; //¼ÇÂ¼ãĞÖµµÄÏÂ±ê
+	//é€šè¿‡ç›´æ–¹å›¾æ•°æ®ï¼Œè·å–æ»¡è¶³ç™¾åˆ†æ¯”çš„é˜ˆå€¼
+	int total = TransImg.cols * TransImg.rows;	//æ€»åƒç´ æ•°ç›®
+	int count = 0;	//è®°å½•å·²ç»Ÿè®¡çš„æ•°ç›®
+	int index=0; //è®°å½•é˜ˆå€¼çš„ä¸‹æ ‡
 	double perValue = (double)value / 100;
-	int pixNum = total * perValue;	//ãĞÖµÒÔÏÂµÄÏñËØÊıÓ¦¸Ã´óÓÚpixNum
+	int pixNum = total * perValue;	//é˜ˆå€¼ä»¥ä¸‹çš„åƒç´ æ•°åº”è¯¥å¤§äºpixNum
 	for (int i = 0; i < 256; i++)
 	{	
 		if (count>=pixNum)
@@ -209,63 +209,63 @@ void binaryLikeThresDo(int,void* param)
 			}
 		}
 	}
-	imshow("Àà¶şÖµ", OutImg);
+	imshow("ç±»äºŒå€¼", OutImg);
 }
-/*Àà¶şÖµÍ¼ÏñãĞÖµµÄÑ¡È¡£¬¿ØÖÆº¯Êı
-* ×¨ÃÅÓÃÓÚ´¦ÀíÎÄ±¾ÕÕÆ¬£¬Í¨¹ıÊÖ¶¯µ÷½Ú»¬¿é£¬¿ØÖÆÎÄ×ÖÕ¼±È£¬ÊµÊ±Êä³ö½á¹û£¬Ñ¡Ôñ×îÓÅ½â
+/*ç±»äºŒå€¼å›¾åƒé˜ˆå€¼çš„é€‰å–ï¼Œæ§åˆ¶å‡½æ•°
+* ä¸“é—¨ç”¨äºå¤„ç†æ–‡æœ¬ç…§ç‰‡ï¼Œé€šè¿‡æ‰‹åŠ¨è°ƒèŠ‚æ»‘å—ï¼Œæ§åˆ¶æ–‡å­—å æ¯”ï¼Œå®æ—¶è¾“å‡ºç»“æœï¼Œé€‰æ‹©æœ€ä¼˜è§£
 */
 void binaryLikeThres()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("C:\\my\\½ØÍ¼\\QQÍ¼Æ¬20220817095728.jpg");
+	srcImg = imread("C:\\my\\æˆªå›¾\\QQå›¾ç‰‡20220817095728.jpg");
 	cvtColor(srcImg, grayImg, COLOR_BGR2GRAY);
 	TransImg = grayImg.clone();
 	generateHistogram2(TransImg);
-	namedWindow("Àà¶şÖµ", WINDOW_AUTOSIZE);
-	//´´½¨»¬¿é
+	namedWindow("ç±»äºŒå€¼", WINDOW_AUTOSIZE);
+	//åˆ›å»ºæ»‘å—
 	value = 50;
-	createTrackbar("ÎÄ×Ö°Ù·Ö±È", "Àà¶şÖµ", &value, 100, binaryLikeThresDo);
+	createTrackbar("æ–‡å­—ç™¾åˆ†æ¯”", "ç±»äºŒå€¼", &value, 100, binaryLikeThresDo);
 
-	imshow("Àà¶şÖµ", TransImg);
+	imshow("ç±»äºŒå€¼", TransImg);
 	waitKey();
 }
 
-/*µü´úÊ½ãĞÖµÑ¡È¡
-* Ê×Ñ¡»ñÈ¡Ö±·½Í¼Êı×é£¬È»ºó¼ÆËã»Ò¶È¾ùÖµ£¬Ëæºó²»¶Ïµü´ú±Æ½ü
+/*è¿­ä»£å¼é˜ˆå€¼é€‰å–
+* é¦–é€‰è·å–ç›´æ–¹å›¾æ•°ç»„ï¼Œç„¶åè®¡ç®—ç°åº¦å‡å€¼ï¼Œéšåä¸æ–­è¿­ä»£é€¼è¿‘
 */
 void iterativeThres()
 {
 	Mat srcImg, grayImg;
-	srcImg = imread("C:\\my\\½ØÍ¼\\QQÍ¼Æ¬20220817095728.jpg");
+	srcImg = imread("C:\\my\\æˆªå›¾\\QQå›¾ç‰‡20220817095728.jpg");
 	cvtColor(srcImg, grayImg, COLOR_BGR2GRAY);
 	generateHistogram2(grayImg);
 	int t=128;
 	
 	int oldt=0,u1,u2;
-	//½«tÉèÖÃÎª³õÊ¼ãĞÖµ
+	//å°†tè®¾ç½®ä¸ºåˆå§‹é˜ˆå€¼
 	while (true)
 	{	
-		//uÎª×Ü»Ò¶ÈÊı
+		//uä¸ºæ€»ç°åº¦æ•°
 		u1 = u2 = 0;
-		//pixÎªÏñËØÊıÄ¿
+		//pixä¸ºåƒç´ æ•°ç›®
 		int pix1=0 , pix2 = 0;
 		for (int i = 0; i < 256; i++)
 		{	
 			if (i<=t)
 			{
-				//u1ÎªĞ¡ÓÚãĞÖµ
+				//u1ä¸ºå°äºé˜ˆå€¼
 				u1 += i * Hist[i];
 				pix1 += Hist[i];
 			}
 			else
 			{
-				//u2Îª´óÓÚãĞÖµµÄ²¿·Ö
+				//u2ä¸ºå¤§äºé˜ˆå€¼çš„éƒ¨åˆ†
 				u2 += i * Hist[i];
 				pix2 += Hist[i];
 			}
 		}
 		
-		//aveuÎªÁ½¸öÇøÓòµÄÆ½¾ù»Ò¶ÈÖµ£¬Ê¹ÓÃunµÄ×Ü»Ò¶ÈÖµ/ÏñËØÊı
+		//aveuä¸ºä¸¤ä¸ªåŒºåŸŸçš„å¹³å‡ç°åº¦å€¼ï¼Œä½¿ç”¨unçš„æ€»ç°åº¦å€¼/åƒç´ æ•°
 		int aveu1 = u1 / pix1;
 		int aveu2 = u2 / pix2;
 		t = (aveu1+	aveu2 )/ 2;
@@ -279,6 +279,67 @@ void iterativeThres()
 		}
 	}
 
-	cout << "ãĞÖµÎª£º" << t << endl;
+	cout << "é˜ˆå€¼ä¸ºï¼š" << t << endl;
 	return;
+}
+
+
+/*LBPç‰¹å¾æå–
+* ä½¿ç”¨3*3çš„çª—å£
+*/
+void LBP3Box()
+{
+	Mat srcImg, grayImg, outImg;
+	srcImg = imread("C:\\my\\æˆªå›¾\\QQæˆªå›¾20220824121657.jpg");
+	cvtColor(srcImg, grayImg, COLOR_BGR2GRAY);
+	outImg = grayImg.clone();
+	imshow("åŸå›¾", grayImg);
+	for (int i = 1; i < grayImg.rows-1; i++)
+	{	
+		for (int j = 1; j < grayImg.cols-1; j++)
+		{	
+			//å½“å‰ä½ç½®çš„åƒç´ å€¼
+			uchar pixCurrent = grayImg.at<uchar>(i, j);
+			//è®¡ç®—å‘¨å›´8ä¸ªåƒç´ å€¼çš„01å€¼
+			int pixBins[8]{};
+			int index = 0;
+			//è¿™ç§è®¡ç®—æ–¹å¼ ä¼˜é›… ( â€¢Ì€ Ï‰ â€¢Ì )âœ§
+			for (int s = -1; s <=1; s++)
+			{	
+				for (int k = 1; k >=-1; k--)
+				{	
+					if (s==1&&k==1)	
+					{	
+						//æ’é™¤ä¸­é—´å—çš„è®¡ç®—
+						continue;
+					}
+
+					uchar pixTemp= grayImg.at<uchar>(i+s, j+k);
+					//çª—å£åŒºåŸŸçš„å€¼å¤§äºä¸­å¿ƒå€¼ï¼Œæ ‡1ï¼›å¦åˆ™0
+					if (pixTemp>pixCurrent)
+					{	
+						pixBins[index] = 1;
+					}
+					else
+					{
+						pixBins[index] = 0;
+					}
+
+					index++;
+				}
+			}
+
+			int pixValue = 0;
+			for (int i = 0; i < 8; i++)
+			{	
+				pixValue = pixValue << 1;	//ä½æ“ä½œï¼Œå·¦ç§»ä¸€ä½ï¼Œå³ä¾§è¡¥0
+				pixValue += pixBins[i];	//å“¦~ æˆ‘çš„ä¸Šå¸å•Šï¼Œå¤šä¹ˆå·§å¦™çš„ç®—æ³•~ å®Œå…¨ä¸åƒæ˜¯æˆ‘å†™å‡ºæ¥çš„å‘¢~ ä½†æ˜¯ï¼Œäº²çˆ±çš„å·´å·´æ‰˜æ–¯ï¼Œæˆ‘ä¿è¯ï¼Œè¿™æ˜¯æˆ‘è‡ªå·±å†™å‡ºæ¥çš„
+
+			}
+			outImg.at<uchar>(i, j) = pixValue;
+		}
+	}
+
+	imshow("LBP", outImg);
+	waitKey();
 }
